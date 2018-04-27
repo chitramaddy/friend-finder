@@ -7,12 +7,12 @@ var profiles = require("../app/data/friends");
 module.exports = function(app){
     
     //get all the user profile and send back json
-    app.get("/api/profiles", function(req, res){
+    app.get("/api/friends", function(req, res){
         res.json(profiles);
     });
 
     //post new profiles to the server
-    app.post("/api/profiles/new", function(req, res){
+    app.post("/api/friends/new", function(req, res){
 
         //get info from POST request
         var newProfile = req.body;

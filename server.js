@@ -3,7 +3,6 @@ var express = require ("express");
 var bodyParser = require ("body-parser");
 var path = require ("path");
 
-
 //create server with express
 var app = express();
 
@@ -16,7 +15,7 @@ app.use(bodyParser.json());
 
 //set up routes
 require('./routing/apiRoutes')(app);
-require('./routing/htmlRoutes')(app);
+// require('./routing/htmlRoutes')(app);
 
 //turn the server on
 app.listen(PORT, function(){
