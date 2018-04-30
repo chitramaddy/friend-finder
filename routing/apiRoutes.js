@@ -15,12 +15,13 @@ module.exports = function(app){
     app.post("/api/friends/new", function(req, res){
 
         //get info from POST request
-        var newFriend = req.body;
+        var friend = req.body;
 
-        newFriend.id = uuid();
+        friend.id = uuid();
 
-        friends.push(newFriend);
+        friends.push(friend);
 
-        res.json(newFriend);
+        res.json(friend);
+        console.log(friend);
     })
 }

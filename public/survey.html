@@ -192,37 +192,39 @@
         var name = $("#name").val().trim();
         var image = $("#image").val().trim();
         var totalScore = 0;
-        
+
         //to store the value of each score in an array
         var scoresArr = [];
         $(".ans").each(function () {
           $(this).attr("data-value", $(this).val().trim());
           var score = parseInt($(this).attr("data-value"));
+          scoresArr.push(score);
 
-          if (isNaN(score)) {
-            $(".ans").html("Please pick a valid answer");
-          } else {
-            scoresArr.push(score);
-          }
         });
-        
+
         //Object for storing all the form data
         var friend = {
           name: name,
           image: image,
-          scores: scoresArr
+          score: scoresArr
         }
         $("#name").val(" ");
         $("#image").val(" ");
-        $(".ans").val().trim(" ");
-        
+        $(".ans").val(" ");
+        console.log(friend.name, friend.image, friend.scores);
         // findFriend(friend);
-      });
-// <!-- 
-//       function findFriend(friend){
-//         for
+        $.post("/api/friends/new", friend)
+          .then(function (data) {
+            console.log(data);
 
-//       } -->
+          });
+      });
+      // function findFriend(friend){
+      //   for 
+
+      // }
+
+
     });
   </script>
 
