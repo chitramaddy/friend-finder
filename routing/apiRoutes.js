@@ -2,25 +2,25 @@
 var uuid = require ("uuid/v4");
 
 //data
-var profiles = require("../app/data/friends");
+var friends = require("../app/data/friends");
 
 module.exports = function(app){
     
     //get all the user profile and send back json
     app.get("/api/friends", function(req, res){
-        res.json(profiles);
+        res.json(friends);
     });
 
     //post new profiles to the server
     app.post("/api/friends/new", function(req, res){
 
         //get info from POST request
-        var newProfile = req.body;
+        var newFriend = req.body;
 
-        newProfile.id = uuid();
+        newFriend.id = uuid();
 
-        profiles.push(newProfile);
+        friends.push(newFriend);
 
-        res.json(newProfile);
+        res.json(newFriend);
     })
 }

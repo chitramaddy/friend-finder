@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 //set up routes
 require('./routing/apiRoutes')(app);
-// require('./routing/htmlRoutes')(app);
+require('./routing/htmlRoutes')(app);
 
 //turn the server on
 app.listen(PORT, function(){
