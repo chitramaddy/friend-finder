@@ -216,21 +216,36 @@
           .then(function (friend) {
             findFriend(friend);
           });
-        
+
         //This function takes the value of the new friend object that was posted and finds friend from existing data
         function findFriend(friend) {
-          console.log(friend);
+
+          //Store the new friend's score in an array
+          var scoreOne = [];
+          scoreOne = friend.score;
+
+          //get request to get the data of existing friends
           $.get("/api/friends", function (data) {
             console.log(data);
-            for (var i = 0; i < data.length; i++) {
-              
-              //to exclude the newfriend is not compared against themself
-              if(data[i].id !== friend.id){
-              var scoreOne = []; 
-              scoreOne = data[i].scores;
 
+            //get the existing friends score in an array to compare
+            for (var i = 0; i < data.length; i++) {
+
+              //to exclude the newfriend is not compared against themself
+              if (data[i].id !== friend.id) {
+                var scoreTwo = [];
+                scoreTwo = data[i].scores;
+
+                //Find the difference in score between the newfriend and each of the existing friends
+                var scoreDiff = [];
+                for (var j = 0; j < scoreOne.length; j++) {
+                  var diff = Math.abs((scoreOne[j] - scoreTwo[j]));
+                  scoreDiff.push(diff);
+
+                }
+                console.log(scoreDiff);
+              }
             }
-          }
             // {
             //   for 
 
