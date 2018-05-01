@@ -181,7 +181,7 @@
 
   <!--script to push the data values in to an array-->
   <script>
-    //When the html is ready
+    //When the html is ready    
     $(document).ready(function () {
 
       //When the form is submitted
@@ -199,7 +199,6 @@
           $(this).attr("data-value", $(this).val().trim());
           var score = parseInt($(this).attr("data-value"));
           scoresArr.push(score);
-
         });
 
         //Object for storing all the form data
@@ -211,18 +210,35 @@
         $("#name").val(" ");
         $("#image").val(" ");
         $(".ans").val(" ");
-        console.log(friend.name, friend.image, friend.scores);
-        // findFriend(friend);
+
+        //POST the new friend info to app
         $.post("/api/friends/new", friend)
-          .then(function (data) {
-            console.log(data);
-
+          .then(function (friend) {
+            findFriend(friend);
           });
-      });
-      // function findFriend(friend){
-      //   for 
+        
+        //This function takes the value of the new friend object that was posted and finds friend from existing data
+        function findFriend(friend) {
+          console.log(friend);
+          $.get("/api/friends", function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+              
+              //to exclude the newfriend is not compared against themself
+              if(data[i].id !== friend.id){
+              var scoreOne = []; 
+              scoreOne = data[i].scores;
 
-      // }
+            }
+          }
+            // {
+            //   for 
+
+            // }
+          });
+        }
+      });
+
 
 
     });
