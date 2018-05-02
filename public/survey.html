@@ -213,45 +213,53 @@
 
         //POST the new friend info to app
         $.post("/api/friends/new", friend)
-          .then(function (friend) {
-            findFriend(friend);
+          .then(function (data) {
+            console.log(data);
           });
 
         //This function takes the value of the new friend object that was posted and finds friend from existing data
-        function findFriend(friend) {
+        // function findFriend(friend) {
 
-          //Store the new friend's score in an array
-          var scoreOne = [];
-          scoreOne = friend.score;
+        //   //Store the new friend's score in an array
+        //   var scoreOne = [];
+        //   scoreOne = friend.score;
 
-          //get request to get the data of existing friends
-          $.get("/api/friends", function (data) {
-            console.log(data);
+        //   //get request to get the data of existing friends
+        //   $.get("/api/friends", function (data) {
+        //     console.log(data);
 
-            //get the existing friends score in an array to compare
-            for (var i = 0; i < data.length; i++) {
+        //     //get the existing friends score in an array to compare
+        //     var diffArr = [];
 
-              //to exclude the newfriend is not compared against themself
-              if (data[i].id !== friend.id) {
-                var scoreTwo = [];
-                scoreTwo = data[i].scores;
+        //     for (var i = 0; i < data.length; i++) {
 
-                //Find the difference in score between the newfriend and each of the existing friends
-                var scoreDiff = [];
-                for (var j = 0; j < scoreOne.length; j++) {
-                  var diff = Math.abs((scoreOne[j] - scoreTwo[j]));
-                  scoreDiff.push(diff);
+        //       //to exclude the newfriend is not compared against themself
+        //       if (data[i].id !== friend.id) {
+        //         var scoreTwo = [];
+        //         scoreTwo = data[i].scores;
 
-                }
-                console.log(scoreDiff);
-              }
-            }
-            // {
-            //   for 
+        //         //Find the difference in score between the newfriend and each of the existing friends
+        //         var totalDiff = 0;
+        //         for (var j = 0; j < scoreOne.length; j++) {
+        //           var diff = Math.abs((scoreOne[j] - scoreTwo[j]));
+        //           totalDiff += diff;
+        //         }
+        //         console.log(totalDiff);
+        //         diffArr.push(totalDiff);
 
-            // }
-          });
-        }
+        //         //Sort the difference array to find the closest score
+        //         diffArr.sort(function(a, b){ return (a-b)});
+        //         console.log(diffArr);
+              
+        //     //Question: how do I match the person at diffArr[0] with their data.
+        //       }
+        //     }
+        //     // {
+        //     //   for 
+
+        //     // }
+        //   });
+        // }
       });
 
 
