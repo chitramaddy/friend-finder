@@ -41,7 +41,7 @@ module.exports = function (app) {
 			//to make sure the newfriend is not compared against themself
 			if (friends[i].id !== friend.id) {
 				otherFriends.push(friends[i]);
-				
+
 				var scoreTwo = [];
 				scoreTwo = friends[i].scores;
 
@@ -50,20 +50,16 @@ module.exports = function (app) {
 				for (var j = 0; j < scoreOne.length; j++) {
 					var diff = Math.abs((scoreOne[j] - scoreTwo[j]));
 					totalDiff += diff;
+
+					//to create a totalDiff property for each of the friends and add the totalDiff value
 					otherFriends[i].totalDiff = totalDiff;
 				}
-				//to create a totalDiff property for each of the friends and add the totalDiff value
-				
 			}
 		}
-		console.log(otherFriends);
 		// to Sort the otherFriends array by totalDiff to find the closest score
-		// otherFriends.sort(function (a, b) {
-		// return (a.totalDiff - b.totalDiff);
-		// console.log(otherFriends);
-
-		// });
-
+		otherFriends.sort(function (a, b) {
+			return (a.totalDiff - b.totalDiff);
+		});
+		console.log(otherFriends);
 	}
-
 }
