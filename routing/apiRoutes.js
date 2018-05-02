@@ -14,16 +14,18 @@ module.exports = function (app) {
 	//post new profiles to the server
 	app.post("/api/friends/new", function (req, res) {
 
-		//get info from POST request
+		//get info from POST request from html
 		var friend = req.body;
+		console.log(friend);
 
 		friend.id = uuid();
 
+		var matchedFriend = findFriend(friend);
+
 		friends.push(friend);
 
-		return res.json(friend);
-		console.log(friend);
-		findFriend(friend);
+		res.json(matchedFriend);
+		
 	});
 
 	function findFriend(friend) {
@@ -33,7 +35,6 @@ module.exports = function (app) {
 		scoreOne = friend.score;
 
 		//to get the existing friends score in an array to compare
-		var diffArr = [];
 		var otherFriends = [];
 
 		for (var i = 0; i < friends.length; i++) {
@@ -63,5 +64,6 @@ module.exports = function (app) {
 		console.log(otherFriends);
 		var match = otherFriends[0];
 		console.log(match);
+		return match;
 	}
 }
