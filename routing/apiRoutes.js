@@ -21,7 +21,7 @@ module.exports = function (app) {
 
 		friends.push(friend);
 
-		res.json(friend);
+		return res.json(friend);
 		console.log(friend);
 		findFriend(friend);
 	});
@@ -61,5 +61,7 @@ module.exports = function (app) {
 			return (a.totalDiff - b.totalDiff);
 		});
 		console.log(otherFriends);
+		var match = otherFriends[0];
+		console.log(match);
 	}
 }
