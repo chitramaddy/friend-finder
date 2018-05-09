@@ -4,7 +4,7 @@ var uuid = require("uuid/v4");
 module.exports = [
   {
     name: "john",
-    photo: "../emerald.jpg",
+    photo: " ",
     scores: [
       5, 4, 4, 5, 4, 4, 4, 4, 4, 5
     ],
@@ -12,7 +12,7 @@ module.exports = [
   },
   {
     name: "michelle",
-    photo: "../emerald.jpg",
+    photo: " ",
     scores: [
       5, 3, 3, 5, 3, 3, 3, 3, 3, 5
     ],
@@ -20,7 +20,7 @@ module.exports = [
   },
   {
     name: "maya",
-    photo: "../emerald.jpg",
+    photo: " ",
     scores: [
       3, 4, 4, 3, 4, 4, 4, 4, 4, 3
     ],

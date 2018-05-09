@@ -12,7 +12,7 @@ module.exports = function (app) {
 	});
 
 	//post new profiles to the server
-	app.post("/api/friends/new", function (req, res) {
+	app.post("/api/friends", function (req, res) {
 
 		//get info from POST request from html
 		var friend = req.body;
