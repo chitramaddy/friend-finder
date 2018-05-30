@@ -13,6 +13,9 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// Static directory to be served
+app.use(express.static(__dirname + '/public'));
+
 //set up routes
 require('./routing/apiRoutes')(app);
 require('./routing/htmlRoutes')(app);

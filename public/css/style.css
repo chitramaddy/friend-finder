@@ -1,0 +1,39 @@
+*{
+  box-sizing: border-box;
+  
+}
+
+body{
+  margin: auto; 
+}
+
+.wrapper{
+  margin: 0px 180px;
+  border: solid brown 1px;
+}
+
+.jumbotron{
+    background-image: url(../css/cube.jpg);
+    border: solid 1px burlywood;
+  }
+
+  .form-control {
+    border: solid 1px brown;
+  }
+  .form-control:focus {
+    border-color: #bbccdd;
+    box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.071), 0 0 8px rgba(0, 0, 195, 0.301);
+  }
+
+  h1, h3, h4{
+    font-family: 'Indie Flower', cursive;
+    color: firebrick;
+  }
+
+  h4{
+    color: black;
+  }
+
+  #answer-modal{
+    
+  }
