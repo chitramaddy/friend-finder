@@ -219,37 +219,37 @@
         var scoresArr = [];
         $(".ans").each(function () {
           $(this).attr("data-value", $(this).val().trim());
-          var score = parseInt($(this).attr("data-value"));
-          scoresArr.push(score);
+          var scores = parseInt($(this).attr("data-value"));
+          scoresArr.push(scores);
         });
 
         //Object for storing all the form data
         var friend = {
           name: name,
           image: image,
-          score: scoresArr
+          scores: scoresArr
         }
         $("#name").val(" ");
         $("#image").val(" ");
         $(".ans").val(" ");
-
         $.ajax({
           method: 'POST',
           url: '/api/friends',
           data: friend
         }).then(function (matchedFriend) {
-          console.log(matchedFriend);
           $('.match-name').text(matchedFriend.name);
           $('#match-image').attr('src', matchedFriend.photo);
           $('#answer-modal').modal('show');
 
         });
-      });
-      //POST the new friend info to app
-      $.post("/api/friends/new", friend)
+
+        //POST the new friend info to app
+        $.post("/api/friends/new", friend)
         .then(function (data) {
-          console.log(data);
+        console.log(data);
         });
+      });
+
     });
   </script>
 

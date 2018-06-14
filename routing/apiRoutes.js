@@ -16,7 +16,6 @@ module.exports = function (app) {
 
 		//get info from POST request from html
 		var friend = req.body;
-		console.log(friend);
 
 		friend.id = uuid();
 
@@ -24,7 +23,7 @@ module.exports = function (app) {
 
 		friends.push(friend);
 
-		res.json(matchedFriend);
+		res.send(matchedFriend);
 		
 	});
 
@@ -32,7 +31,8 @@ module.exports = function (app) {
 
 		//to store the new friend's score in an array
 		var scoreOne = [];
-		scoreOne = friend.score;
+		scoreOne = friend.scores;
+		
 
 		//to get the existing friends score in an array to compare
 		var otherFriends = [];
@@ -41,7 +41,7 @@ module.exports = function (app) {
 
 			//to make sure the newfriend is not compared against themself
 			if (friends[i].id !== friend.id) {
-				otherFriends.push(friends[i]);
+				otherFriends.push(friends[i]);				
 
 				var scoreTwo = [];
 				scoreTwo = friends[i].scores;
@@ -61,7 +61,7 @@ module.exports = function (app) {
 		otherFriends.sort(function (a, b) {
 			return (a.totalDiff - b.totalDiff);
 		});
-		console.log(otherFriends);
+
 		var match = otherFriends[0];
 		console.log(match);
 		return match;
